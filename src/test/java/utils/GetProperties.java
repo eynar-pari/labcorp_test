@@ -19,9 +19,6 @@ public class GetProperties {
                 urlWeb=properties.getProperty("urlWeb");
                 browser= properties.getProperty("browser");
                 urlApi=properties.getProperty("urlAPI");
-                System.out.println("urlWeb "+urlWeb);
-                System.out.println("browser "+browser);
-                System.out.println("urlApi "+urlApi);
                 inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();

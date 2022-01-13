@@ -21,6 +21,9 @@ Feature: Test API
         "project": []
     }
     """
+
+  # the api is not working well,. the verification will be commented in order to see the next request
+
 #    Then I expected the response code 200
 #    And I expected the schema validation with "apiTest/read_user_schema.json"
 #    And I expected the expected json result

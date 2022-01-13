@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.*;
 import session.Session;
+import utils.GetProperties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class StepsLabCorp {
 
     @Given("I open {}")
     public void iOpenWwwLabcorpCom(String url) throws Exception {
-        Session.getInstance().getDriver().get(url);
+        Session.getInstance().getDriver().get(GetProperties.getInstance().getUrlWeb());
         acceptCookiesDialog.acceptCookiesButton.click();
     }
 

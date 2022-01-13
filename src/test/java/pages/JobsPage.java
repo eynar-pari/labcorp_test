@@ -4,22 +4,15 @@ import control.Button;
 import control.Input;
 import control.Label;
 import control.Link;
-import io.cucumber.java.bs.I;
-import io.cucumber.java.eo.Se;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import session.Session;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class JobsPage {
 
     public Input keywordSearchInput = new Input(By.xpath("//input[contains(@id,'search-keyword')]"));
     public Input locationInput=new Input(By.xpath("//input[@class='search-location']"));
-    public Button submitButton= new Button(By.xpath("//button[text()='Submit']"));
+    public Button submitButton= new Button(By.cssSelector(".search-form__submit"));
     public Button applyButton = new Button(By.xpath("//*[@class='button job-apply top']"));
     public Map<String, Label> labelsMap = new HashMap<>();
 
