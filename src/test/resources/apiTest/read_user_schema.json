@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+      "type": "object",
+      "properties":
+        {
+          "createdAt": { "type": "integer"  },
+          "employee_firstname": { "type": "string"  },
+          "employee_lastname":  { "type": "string"  },
+          "employee_phonenumbe":  { "type": "string"  },
+          "ademployee_emaildress":  { "type": "string"  },
+          "citemployee_addressy":  { "type": "string"  },
+          "stateemployee_dev_level":  { "type": "string"  },
+          "employee_gender": { "type": "string"  },
+          "employee_hire_date": { "type": "string"  },
+          "employee_onleave": { "type": "boolean"  },
+          "tech_stack":  { "type": "array"  },
+          "project":  { "type": "array"  },
+          "id": { "type": "string"  }
+        }
+    }
+}

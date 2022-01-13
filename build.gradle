@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation 'org.seleniumhq.selenium:selenium-java:4.1.1'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+
+    testImplementation 'io.rest-assured:rest-assured:4.4.0'
+    implementation 'io.rest-assured:rest-assured:4.4.0'
+    implementation 'io.rest-assured:json-path:4.4.0'
+    implementation 'io.rest-assured:json-schema-validator:4.4.0'
+    implementation 'io.rest-assured:rest-assured-common:4.4.0'
+    implementation("org.json:json:20211205")
+    implementation 'net.thisptr:jackson-jq:1.0.0-preview.20210928'
+
+    implementation 'io.cucumber:cucumber-java:7.2.2'
+    testImplementation 'io.cucumber:cucumber-junit:7.2.2'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+
+def propertyFile = !project.hasProperty('propertyFile') ? 'environment.properties' : project.properties['propertyFile']
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            systemProperty "propertyFile", propertyFile.toString()
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'json:build/reports/cucumber/report.json', '--glue', 'runner', 'src/test/resources','--tags']+[suite]
+        }
+    }
+}
+
